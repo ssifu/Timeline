@@ -4,7 +4,7 @@ import axios from "axios";
 import Timeline from "./components/Timeline";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
+import { Typography, CircularProgress, LinearProgress } from "@mui/material";
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -42,7 +42,25 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading posts and user data...</p>;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          width: "100%",
+        }}
+      >
+        <Typography
+          variant="h3"
+          style={{ textAlign: "center", color: "#009688", fontWeight: "bold" }}
+        >
+          Loading Posts
+        </Typography>
+        <CircularProgress />
+      </Box>
+    );
   }
 
   return (
