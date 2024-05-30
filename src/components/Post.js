@@ -3,9 +3,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { teal, blue } from "@mui/material/colors";
-import { Button, Container, Modal } from "@mui/material";
+import { blue } from "@mui/material/colors";
+import { Container, Modal } from "@mui/material";
 import { Box } from "@mui/material";
+import Divider from "@mui/material/Divider";
 
 const colorTheme = createTheme({
   palette: {
@@ -37,13 +38,15 @@ export default function OutlinedCard({ post, user, comments }) {
     <ThemeProvider theme={colorTheme}>
       <Container
         maxWidth={"lg"}
-        style={{ cursor: "pointer" }}
+        style={{
+          cursor: "pointer",
+        }}
         onClick={() => setOpen(true)}
       >
         <Card
-          style={{ backgroundColor: "#009688", color: "white" }}
+          style={{ backgroundColor: "#26a69a", color: "white" }}
           variant="outlined"
-          sx={{ mb: 1.5 }}
+          sx={{ mb: 1.5, mt: 1.5 }}
         >
           <CardContent>
             <Typography variant="h5" component="div">
@@ -56,6 +59,7 @@ export default function OutlinedCard({ post, user, comments }) {
           </CardContent>
         </Card>
       </Container>
+      <Divider style={{ border: "0.25rem solid #26a69a" }} />
       <Modal
         style={{ overflow: "scroll" }}
         open={open}

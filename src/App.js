@@ -63,10 +63,15 @@ const App = () => {
         justify="center"
       >
         <Grid item xs={3}>
-          <Box sx={{ maxWidth: 600 }}>
+          <Box
+            style={{
+              backgroundColor: "#009688",
+            }}
+            sx={{ maxWidth: 600 }}
+          >
             <Typography
-              variant="h1"
-              style={{ textAlign: "center", color: "#009688" }}
+              variant="h2"
+              style={{ textAlign: "center", color: "#FFF", fontWeight: "bold" }}
             >
               Timeline
             </Typography>
