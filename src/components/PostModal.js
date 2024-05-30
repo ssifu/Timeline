@@ -9,8 +9,6 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   maxWidth: "50%",
-  // maxHeight: 500,
-  // width: "90vw",
   maxHeight: "90vh",
   overflowY: "auto",
   bgcolor: "#009688",
@@ -23,26 +21,25 @@ const style = {
 
 const PostModal = ({ post, user, comments, openModal, setOpenModal }) => {
   return (
-    <Modal
-      style={{ overflow: "scroll" }}
-      open={openModal}
-      onClose={() => setOpenModal(false)}
-    >
+    <Modal open={openModal} onClose={setOpenModal}>
       <Box sx={style}>
-        <PostCard title={post.title} userName={user.name} body={post.body} />
+        <PostCard
+          title={post.title}
+          userName={user?.name || "Unknown User"}
+          body={post.body}
+        />
         <Typography variant="h5" fontWeight={800}>
           Comments
         </Typography>
         {comments.length > 0 ? (
-          comments.map((comment) => {
-            return (
-              <CommentCard
-                key={comment.id}
-                email={comment.email}
-                body={comment.body}
-              />
-            );
-          })
+          comments.map((comment) => (
+            <CommentCard
+              key={comment.id}
+              name={comment.name}
+              email={comment.email}
+              body={comment.body}
+            />
+          ))
         ) : (
           <Typography variant="body2">No Comments</Typography>
         )}

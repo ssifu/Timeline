@@ -21,16 +21,15 @@ const App = () => {
             axios.get("https://jsonplaceholder.typicode.com/users"),
             axios.get("https://jsonplaceholder.typicode.com/comments"),
           ]);
+
         const sortedPosts = postsResponse.data.sort((a, b) => b.id - a.id);
         setPosts(sortedPosts);
-        console.log(postsResponse.data);
+
         const userData = usersResponse.data.reduce((acc, user) => {
           acc[user.id] = user;
           return acc;
         }, {});
-        console.log("User Data: " + userData);
         setUsers(userData);
-        console.log(commentsResponse);
 
         setComments(commentsResponse.data);
       } catch (error) {
@@ -67,20 +66,8 @@ const App = () => {
           >
             Timeline
           </Typography>
-          {posts.length > 0 ? (
-            posts.map((post) => (
-              <Timeline
-                key={post.id}
-                post={post}
-                user={users[post.userId]}
-                comments={comments.filter(
-                  (comment) => comment.postId === post.id
-                )}
-              />
-            ))
-          ) : (
-            <p>No posts available</p>
-          )}
+          {/* TIMELINE */}
+          <Timeline users={users} posts={posts} comments={comments} />
         </Box>
       </Grid>
     </Grid>
